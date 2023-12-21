@@ -46,18 +46,18 @@ export const store = reactive({
       ],
     },
     {
-      titolo: "quanti anni aveva gesù quando è morto?",
+      titolo: "Quanti anni vive un cane in media?",
       answers: [
         {
           titolo: "222",
           success: false,
         },
         {
-          titolo: "12",
+          titolo: "33",
           success: false,
         },
         {
-          titolo: "33",
+          titolo: "10",
           success: true,
         },
         {

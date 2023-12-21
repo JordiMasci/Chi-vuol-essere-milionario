@@ -1,7 +1,6 @@
 <script>
 import Contenitor from "./components/Contenitor.vue";
 import QuestPage from "./components/QuestPage.vue";
-import AnswerPage from "./components/AnswerPage.vue";
 
 export default {
   data() {
@@ -10,7 +9,7 @@ export default {
     };
   },
 
-  components: { Contenitor, QuestPage, AnswerPage },
+  components: { Contenitor, QuestPage},
 };
 </script>
 
@@ -21,9 +20,7 @@ export default {
   <div class="question">
     <QuestPage />
   </div>
-  <div class="answer">
-    <AnswerPage />
-  </div>
+
 </template>
 
 <style lang="scss" scoped>
