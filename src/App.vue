@@ -9,21 +9,27 @@ export default {
     };
   },
 
-  components: { Contenitor, QuestPage},
+  components: { Contenitor, QuestPage },
 };
 </script>
 
 <template>
-  <div class="logo">
-    <Contenitor />
+  <div class="wrapper">
+    <div class="logo">
+      <Contenitor />
+    </div>
+    <div class="question">
+      <QuestPage />
+    </div>
   </div>
-  <div class="question">
-    <QuestPage />
-  </div>
-
 </template>
 
 <style lang="scss" scoped>
+.wrapper {
+  height: 100vh;
+  background-color: #11093a;
+}
+
 .logo {
   padding-top: 30px;
   padding-bottom: 30px;

@@ -16,25 +16,39 @@ export default {
 
   components: { AnswerPage },
 
-  computed: {
+  methods: {
     randomQuestion() {
-      let randomIndex = Math.floor(Math.random() * this.myArray.length);
-
-      //   this.usedIndex.push(randomIndex);
+      if (this.usedIndex.length === this.myArray.length) {
+        // Tutte le domande sono state utilizzate, resetta l'array usedIndex
+        this.usedIndex = [];
+        alert("Sono finite le domande");
+      }
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * this.myArray.length);
+        // console.log("Nuovo indice generato: ", randomIndex);
+      } while (this.usedIndex.includes(randomIndex));
       //   console.log(this.usedIndex);
-
       this.question = this.myArray[randomIndex].titolo;
-      console.log(this.question);
+      this.usedIndex.push(randomIndex);
+      // console.log("Nuova domanda: ", this.question);
+
+      this.answer = []; // Resetta l'array delle risposte
 
       for (let i = 0; i < this.myArray[randomIndex].answers.length; i++) {
         this.answer.push(this.myArray[randomIndex].answers[i]);
+        // if (this.answer[i].success) {
+        //   console.log("verde");
+        // } else {
+        //   console.log("red");
+        // }
 
-        console.log(this.answer);
+        // console.log("Nuova risposta: ", this.myArray[randomIndex].answers[i]);
       }
     },
   },
   mounted() {
-    this.randomQuestion;
+    this.randomQuestion();
   },
 };
 </script>
@@ -47,7 +61,7 @@ export default {
   </div>
 
   <div class="answer">
-    <AnswerPage :answer="answer"/>
+    <AnswerPage :answer="answer" @click-answer="randomQuestion" />
   </div>
 </template>
 
@@ -62,6 +76,5 @@ export default {
 
 .answer {
   background-color: #11093a;
-  height: 100vh;
 }
 </style>

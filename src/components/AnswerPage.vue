@@ -8,6 +8,24 @@ export default {
     };
   },
   props: ["answer"],
+  emits: ["click-answer"],
+
+  methods: {
+    // Imposta l'indice della risposta selezionata
+    handleButtonClick(answers, index) {
+      if (answers.success) {
+        console.log("risposta corretta");
+      } else {
+        console.log("risposta sbagliata");
+      }
+
+      // Emetti l'evento click-answer
+      this.answer[index] = { ...answers, clicked: true };
+      setTimeout(() => {
+        this.$emit("click-answer");
+      }, 1000);
+    },
+  },
 };
 </script>
 
@@ -15,9 +33,16 @@ export default {
   <div class="container">
     <div class="row p-4 g-2 text-center">
       <div v-for="(answers, index) in answer" :key="index" class="col-6">
-        <div class="ciao d-flex justify-content-center align-items-center">
+        <button
+          class="ciao btn d-flex justify-content-center align-items-center"
+          @click="() => handleButtonClick(answers, index)"
+          :class="{
+            'btn-success': answers.success && answers.clicked,
+            'btn-danger': !answers.success && answers.clicked,
+          }"
+        >
           {{ answers.titolo }}
-        </div>
+        </button>
       </div>
     </div>
   </div>
