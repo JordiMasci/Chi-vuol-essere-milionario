@@ -5,7 +5,6 @@ import QuestPage from "./components/QuestPage.vue";
 export default {
   data() {
     return {
-      title: "Hello world",
     };
   },
 

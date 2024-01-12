@@ -1,6 +1,9 @@
 import { reactive } from "vue";
 export const store = reactive({
 
+  score: 0,
+  correctAnswers: [],
+  wrongAnswers: [],
 
   questions: [
     {

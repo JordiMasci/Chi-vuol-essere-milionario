@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      isButtonDisabled: false,
     };
   },
   props: ["answer"],
@@ -14,18 +15,28 @@ export default {
     // Imposta l'indice della risposta selezionata
     handleButtonClick(answers, index) {
       if (answers.success) {
-        console.log("risposta corretta");
+        this.store.score += 3000;
+        this.store.correctAnswers.push(answers);
+        console.log(this.store.score);
       } else {
+        this.store.wrongAnswers.push(answers);
         console.log("risposta sbagliata");
       }
-
+      this.isButtonDisabled = true;
       // Emetti l'evento click-answer
+
       this.answer[index] = { ...answers, clicked: true };
       setTimeout(() => {
         this.$emit("click-answer");
+        this.isButtonDisabled = false;
       }, 1000);
+
     },
+
+
   },
+
+
 };
 </script>
 
@@ -33,16 +44,21 @@ export default {
   <div class="container">
     <div class="row p-4 g-2 text-center">
       <div v-for="(answers, index) in answer" :key="index" class="col-6">
-        <button
-          class="ciao btn d-flex justify-content-center align-items-center"
-          @click="() => handleButtonClick(answers, index)"
-          :class="{
-            'btn-success': answers.success && answers.clicked,
-            'btn-danger': !answers.success && answers.clicked,
-          }"
+        <div
+          class="w-100 border border-light rounded-pill d-flex justify-content-center"
         >
-          {{ answers.titolo }}
-        </button>
+          <button
+            class="ciao btn d-flex justify-content-center align-items-center w-100 rounded-pill"
+            @click="() => handleButtonClick(answers, index)"
+            :class="{
+              'btn-success': answers.success && answers.clicked,
+              'btn-danger': !answers.success && answers.clicked,
+            }"
+            :disabled="isButtonDisabled"
+          >
+            {{ answers.titolo }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -53,8 +69,5 @@ export default {
   height: 100px;
   color: white;
   font-size: 18px;
-
-  border: solid 1px white;
-  border-radius: 100px;
 }
 </style>
