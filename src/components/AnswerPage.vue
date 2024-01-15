@@ -22,12 +22,15 @@ export default {
         this.store.wrongAnswers.push(answers);
         console.log("risposta sbagliata");
       }
-      this.isButtonDisabled = true;
-      // Emetti l'evento click-answer
 
+      // disattivo button durante il setTimeout
+      this.isButtonDisabled = true;
+
+      // Emetti l'evento click-answer
       this.answer[index] = { ...answers, clicked: true };
       setTimeout(() => {
         this.$emit("click-answer");
+        // riattivo il button
         this.isButtonDisabled = false;
       }, 1500);
 

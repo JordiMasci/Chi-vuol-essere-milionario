@@ -28,7 +28,9 @@ export default {
           // Genera indici casuali, se già presenti ne genera un altro
         } while (this.usedIndex.includes(randomIndex));
 
+        // creo una variabile di domande con indice [randomIndex]
         this.question = this.myArray[randomIndex].titolo;
+        // riempio array udexIndex con i valori di randomIndex
         this.usedIndex.push(randomIndex);
 
         // Genera un array di indici casuali per le risposte (metodo sorting)
@@ -42,34 +44,38 @@ export default {
           (index) => this.myArray[randomIndex].answers[index]
         );
       } else {
-        // alert("Sono finite le domande.\n" + "€" + this.store.score);
+        // finite le domande
 
+        // nascondo answerSection
         let answerSectionEl = document.getElementById("answerSection");
         answerSectionEl.classList.add("d-none");
-
-        let scoreSectionEl = document.getElementById("scoreSection");
-        scoreSectionEl.classList.remove("d-none");
-
+        // nascondo questionContainer
         let questionContainer = document.getElementById("questionContainer");
         questionContainer.classList.add("d-none");
+        // mostro scoreSection
+        let scoreSectionEl = document.getElementById("scoreSection");
+        scoreSectionEl.classList.remove("d-none");
       }
     },
 
     playAgain() {
+      // svuoto tutti i valori
       this.usedIndex = [];
       this.store.score = 0;
       this.store.correctAnswers = [];
       this.store.wrongAnswers = [];
 
+      // mostro answerSection
       let answerSectionEl = document.getElementById("answerSection");
       answerSectionEl.classList.remove("d-none");
-
+      // mostro questionContainer
+      let questionContainer = document.getElementById("questionContainer");
+      questionContainer.classList.remove("d-none");
+      // nascondo scoreSection
       let scoreSectionEl = document.getElementById("scoreSection");
       scoreSectionEl.classList.add("d-none");
 
-      let questionContainer = document.getElementById('questionContainer')
-      questionContainer.classList.remove('d-none')
-
+      // richiamo la funzione per caricare il gioco
       this.randomQuestion();
     },
   },

@@ -4,6 +4,7 @@ export const store = reactive({
   correctAnswers: [],
   wrongAnswers: [],
 
+  // Domande e risposte
   questions: [
     {
       titolo: "Qual è la capitale del Giappone?",
