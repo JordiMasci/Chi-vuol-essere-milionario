@@ -18,47 +18,21 @@ export default {
   components: { AnswerPage },
 
   methods: {
-    // randomQuestion() {
-
-    //   if (this.usedIndex.length != this.myArray.length) {
-    //     let randomIndex;
-    //     do {
-    //       randomIndex = Math.floor(Math.random() * this.myArray.length);
-    //       // console.log("Nuovo indice generato: ", randomIndex);
-    //     } while (this.usedIndex.includes(randomIndex));
-    //     //   console.log(this.usedIndex);
-    //     this.question = this.myArray[randomIndex].titolo;
-    //     this.usedIndex.push(randomIndex);
-    //     // console.log("Nuova domanda: ", this.question);
-
-    //     this.answer = []; // Resetta l'array delle risposte
-
-    //     for (let i = 0; i < this.myArray[randomIndex].answers.length; i++) {
-    //       // randomIndexAnswer = Math.floor(Math.random() * this.answer.length);
-    //       this.answer.push(this.myArray[randomIndex].answers[i]);
-    //     }
-    //   } else {
-    //     // alert("Sono finite le domande.\n" + "€" + this.store.score);
-
-    //     let answerSectionEl = document.getElementById("answerSection");
-    //     answerSectionEl.classList.add("d-none");
-
-    //     let scoreSectionEl = document.getElementById("scoreSection");
-    //     scoreSectionEl.classList.remove("d-none");
-    //   }
-    // },
 
     randomQuestion() {
+      // verifico se l'array usedIndex è lungo quanto l'array question
       if (this.usedIndex.length !== this.myArray.length) {
         let randomIndex;
         do {
+          // trova un numero casuale
           randomIndex = Math.floor(Math.random() * this.myArray.length);
+          // Genera indici casuali, se già presenti ne genera un altro
         } while (this.usedIndex.includes(randomIndex));
 
         this.question = this.myArray[randomIndex].titolo;
         this.usedIndex.push(randomIndex);
 
-        // Genera un array di indici casuali per le risposte
+        // Genera un array di indici casuali per le risposte (metodo sorting)
         let answerIndices = Array.from(
           { length: this.myArray[randomIndex].answers.length },
           (_, i) => i
