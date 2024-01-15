@@ -1,91 +1,92 @@
 import { reactive } from "vue";
 export const store = reactive({
-
   score: 0,
   correctAnswers: [],
   wrongAnswers: [],
 
   questions: [
     {
-      titolo: "Chi è Patrizia",
+      titolo: "Qual è la capitale del Giappone?",
       answers: [
         {
-          titolo: "Zozza",
+          titolo: "Pechino",
           success: false,
         },
         {
-          titolo: "Angelo",
+          titolo: "Seul",
           success: false,
         },
         {
-          titolo: "Brava",
+          titolo: "Tokyo",
           success: true,
         },
         {
-          titolo: "scorretta",
+          titolo: "Bangkok",
           success: false,
         },
       ],
     },
     {
-      titolo: "La capitale dell'italia",
+      titolo: "Chi ha scritto il famoso romanzo 'Il Piccolo Principe'?",
       answers: [
         {
-          titolo: "Milano",
+          titolo: "J.K. Rowling",
           success: false,
         },
         {
-          titolo: "Iraq",
-          success: false,
-        },
-        {
-          titolo: "Roma",
+          titolo: "Antoine de Saint-Exupéry",
           success: true,
         },
         {
-          titolo: "Genova",
+          titolo: "Charles Dickens",
+          success: false,
+        },
+        {
+          titolo: "Jane Austen",
           success: false,
         },
       ],
     },
     {
-      titolo: "Quanti anni vive un cane in media?",
+      titolo:
+        "In quale anno è stata fondata la NASA (National Aeronautics and Space Administration)?",
       answers: [
         {
-          titolo: "222",
-          success: false,
-        },
-        {
-          titolo: "33",
-          success: false,
-        },
-        {
-          titolo: "10",
+          titolo: "1958",
           success: true,
         },
         {
-          titolo: "47",
+          titolo: "1969",
+          success: false,
+        },
+        {
+          titolo: "1975",
+          success: false,
+        },
+        {
+          titolo: "1983",
           success: false,
         },
       ],
     },
     {
-      titolo: "Il verso del cane",
+      titolo:
+        "Quale elemento chimico ha il simbolo 'O' nella tavola periodica?",
       answers: [
         {
-          titolo: "Muu",
+          titolo: "Oro",
           success: false,
         },
         {
-          titolo: "Miao",
-          success: false,
-        },
-        {
-          titolo: "Bau",
+          titolo: "Ossigeno",
           success: true,
         },
         {
-          titolo: "amen",
+          titolo: "Osmio",
+          success: false,
+        },
+        {
+          titolo: "Ozono",
           success: false,
         },
       ],

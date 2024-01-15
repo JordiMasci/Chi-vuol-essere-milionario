@@ -29,7 +29,7 @@ export default {
       setTimeout(() => {
         this.$emit("click-answer");
         this.isButtonDisabled = false;
-      }, 1000);
+      }, 1500);
 
     },
 

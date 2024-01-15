@@ -18,7 +18,6 @@ export default {
   components: { AnswerPage },
 
   methods: {
-
     randomQuestion() {
       // verifico se l'array usedIndex è lungo quanto l'array question
       if (this.usedIndex.length !== this.myArray.length) {
@@ -50,6 +49,9 @@ export default {
 
         let scoreSectionEl = document.getElementById("scoreSection");
         scoreSectionEl.classList.remove("d-none");
+
+        let questionContainer = document.getElementById("questionContainer");
+        questionContainer.classList.add("d-none");
       }
     },
 
@@ -65,6 +67,9 @@ export default {
       let scoreSectionEl = document.getElementById("scoreSection");
       scoreSectionEl.classList.add("d-none");
 
+      let questionContainer = document.getElementById('questionContainer')
+      questionContainer.classList.remove('d-none')
+
       this.randomQuestion();
     },
   },
@@ -75,7 +80,10 @@ export default {
 </script>
 
 <template>
-  <div class="container d-flex justify-content-center pt-3">
+  <div
+    class="container d-flex justify-content-center pt-3"
+    id="questionContainer"
+  >
     <div class="question text-center">
       {{ this.question }}
     </div>
@@ -88,7 +96,7 @@ export default {
 
   <!-- Componente Punteggio finale -->
 
-  <div class="container d-none" id="scoreSection">
+  <div class="container d-none mt-5 text-center" id="scoreSection">
     <p class="text-light">Punteggio finale: €{{ this.store.score }}</p>
 
     <!-- RISPOSTE ESATTE -->
@@ -109,14 +117,15 @@ export default {
     </ul>
     <p class="text-success" v-else>Nessuna risposta sbagliata</p>
 
-    <button class="btn btn-success mb-5" @click="playAgain">Gioca Ancora</button>
+    <button class="btn btn-success mb-5" @click="playAgain">
+      Gioca Ancora
+    </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .question {
-  width: 300px;
-  height: 100px;
+  width: 600px;
 
   font-size: 30px;
   color: white;
@@ -124,5 +133,9 @@ export default {
 
 .answer {
   background-color: #11093a;
+}
+
+ul {
+  list-style-type: none;
 }
 </style>
